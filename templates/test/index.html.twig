@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+ {% block body %}
+     <div class="container">
+         <div class="row mt-5">
+             <div class="col-sm-8 offset-sm-2">
+                 <h1>Vos informations</h1>
+             </div>
+             <table class="table table-light table-striped table-hover">
+                     <thead>
+                     <tr>
+                         <th>ID du Produit</th>
+                         <th>Nom</th>
+                         <th>ID Fournisseur</th>
+                         <th>ID Catégorie</th>
+                         <th>Quantité par unité</th>
+                         <th>Prix unitaire</th>
+                         <th>Unités en stock</th>
+                         <th>Unités en commande</th>
+                         <th>Niveau d'alerte</th>
+                         <th>Discontinué</th>
+                     </tr>
+                     </thead>
+                     <tbody>
+                     {% for array in obj %}
+                         <tr>
+                                <td>{{ array.id }}</td>
+                                <td>{{ array.name }}</td>
+                                <td>{{ array.supplierID }}</td>
+                                <td>{{ array.categoryID }}</td>
+                                <td>{{ array.quantityPerUnit }}</td>
+                                <td>{{ array.unitPrice }}</td>
+                                <td>{{ array.unitsInStock }}</td>
+                                <td>{{ array.unitsOnOrder }}</td>
+                                <td>{{ array.reorderLevel }}</td>
+                                <td>{{ array.discontinued }}</td>
+                         </tr>
+                     {% endfor %}
+                     </tbody>
+                 </table>
+
+         </div>
+     </div>
+ {% endblock %}
