@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Products{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Détails</h1>
+    <table class="table table-bordered table-hover">
+        <tbody>
+            <tr>
+                <th>ID du Produit</th>
+                <td>{{ product.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom du Produit	</th>
+                <td>{{ product.ProductName }}</td>
+            </tr>
+            <tr>
+                <th>ID de la catégorie	</th>
+                <td>{{ product.CategoryID }}</td>
+            </tr>
+            <tr>
+                <th>Quantité par unités	</th>
+                <td>{{ product.QuantityPerUnit }}</td>
+            </tr>
+            <tr>
+                <th>Prix unitaire</th>
+                <td>{{ product.UnitPrice }}</td>
+            </tr>
+            <tr>
+                <th>Quantité en stock</th>
+                <td>{{ product.UnitsInStock }}</td>
+            </tr>
+            <tr>
+                <th>Quantité en commande</th>
+                <td>{{ product.UnitsOnOrder }}</td>
+            </tr>
+            <tr>
+                <th>Niveau d'alerte</th>
+                <td>{{ product.ReorderLevel }}</td>
+            </tr>
+            <tr>
+                <th>Vente suspendue</th>
+                <td>{{ product.Discontinue ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="row d-flex justify-content-around">
+
+        <a href="{{ path('products_index') }}" class="btn btn-secondary">Retour à la liste</a>
+        <a href="{{ path('products_edit', {'id': product.id}) }}" class="btn btn-primary">Modifier</a>
+        {{ include('products/_delete_form.html.twig') }}
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des produits{% endblock %}
+
+{% block body %}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success m-3">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <div class="container">
+        <div class="row d-flex justify-content-between my-3 mx-1">
+            <h1>Liste des produits</h1>
+            <a href="{{ path('products_new') }}" class="btn btn-primary align-self-center">Créer un nouveau produit</a>
+        </div>
+
+        <table class="table table-bordered table-hover">
+        <thead>
+            <tr class="text-center">
+                <th>ID du Produit</th>
+                <th class="align-middle">Nom du Produit</th>
+                <th>ID de la catégorie</th>
+                <th>Quantité par unités</th>
+                <th>Prix unitaire</th>
+                <th>Quantité en stock</th>
+                <th>Quantité en commande</th>
+                <th>Niveau d'alerte</th>
+                <th>Vente suspendue</th>
+                <th class="align-middle">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr class="text-center">
+                <td class="align-middle">{{ product.id }}</td>
+                <td class="align-middle">{{ product.ProductName }}</td>
+                <td class="align-middle">{{ product.CategoryID }}</td>
+                <td class="align-middle">{{ product.QuantityPerUnit }}</td>
+                <td class="align-middle">{{ product.UnitPrice }}</td>
+                <td class="align-middle">{{ product.UnitsInStock }}</td>
+                <td class="align-middle">{{ product.UnitsOnOrder }}</td>
+                <td class="align-middle">{{ product.ReorderLevel }}</td>
+                <td class="align-middle">{{ product.Discontinue ? 'Oui' : 'Non' }}</td>
+                <td>
+                    <div class="d-flex flex-column">
+                        <a href="{{ path('products_show', {'id': product.id}) }}" class="btn btn-primary mb-1">Détails</a>
+                        <a href="{{ path('products_edit', {'id': product.id}) }}" class="btn btn-primary">Modifier</a>
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    </div>
+{% endblock %}
