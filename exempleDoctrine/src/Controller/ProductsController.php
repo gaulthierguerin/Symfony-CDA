@@ -6,6 +6,7 @@ use App\Entity\Products;
 use App\Form\ProductsType;
 use App\Repository\ProductsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,6 +18,8 @@ class ProductsController extends AbstractController
 {
     /**
      * @Route("/", name="products_index", methods={"GET"})
+     * @param ProductsRepository $productsRepository
+     * @return Response
      */
     public function index(ProductsRepository $productsRepository): Response
     {
@@ -37,6 +40,26 @@ class ProductsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            //récupération de la saisie sur l'upload
+            $pictureFile = $form['picture2']->getData();
+            if ($pictureFile) {
+                //renommage du fichier
+                //nom du fichier + extension
+                $newPicture = uniqid() . '.' . $pictureFile->guessExtension();
+                //assignation de la valeur à la propriété picture à l'aide du setter
+                $product->setPicture($newPicture);
+                try {
+                    //déplacement du fichier vers le répertoire de destination sur le serveur
+                    $pictureFile->move(
+                        $this->getParameter('photo_directory'),
+                        $newPicture
+                    );
+                } catch (FileException $e) {
+                    //gestion de l'erreur si le déplacement n'est pas effectué
+                }
+            }
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($product);
             $entityManager->flush();
@@ -56,6 +79,8 @@ class ProductsController extends AbstractController
 
     /**
      * @Route("/{id}", name="products_show", methods={"GET"})
+     * @param Products $product
+     * @return Response
      */
     public function show(Products $product): Response
     {
@@ -66,6 +91,9 @@ class ProductsController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="products_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Products $product
+     * @return Response
      */
     public function edit(Request $request, Products $product): Response
     {
@@ -73,6 +101,25 @@ class ProductsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            //récupération de la saisie sur l'upload
+            $pictureFile = $form['picture2']->getData();
+            if ($pictureFile) {
+                //renommage du fichier
+                //nom du fichier + extension
+                $newPicture = uniqid() . '.' . $pictureFile->guessExtension(); //uniqid() permet de créer un id parfaitement unique à la microsecondes près
+                //assignation de la valeur à la propriété picture à l'aide du setter
+                $product->setPicture($newPicture);
+                try {
+                    //déplacement du fichier vers le répertoire de destination sur le serveur
+                    $pictureFile->move(
+                        $this->getParameter('photo_directory'),
+                        $newPicture
+                    );
+                } catch (FileException $e) {
+                    //gestion de l'erreur si le déplacement n'est pas effectué
+                }
+            }
+
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash(
                 'success',
@@ -91,6 +138,9 @@ class ProductsController extends AbstractController
 
     /**
      * @Route("/{id}", name="products_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Products $product
+     * @return Response
      */
     public function delete(Request $request, Products $product): Response
     {

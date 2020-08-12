@@ -44,11 +44,11 @@ class Products
 
     /**
      * @ORM\Column(type="string", length=20, nullable=true)
-     * * @Assert\NotBlank(
+     * @Assert\NotBlank(
      *     message="Veuillez renseigner ce que contient une unité"
      * )
      * @Assert\Regex(
-     *     pattern="/^[0-9]{1,6}([\,\.]{1}[\d]{1,4})?$/",
+     *     pattern="/^[\s\w\#\_\-éèàçâêîôûùäaëïüö]+$/",
      *     message="Caratère(s) non valide(s) (Format : Maximum 6 chiffres avant la virgule, 4 après (optionnel)"
      * )
      */
@@ -112,6 +112,11 @@ class Products
      * @ORM\ManyToOne(targetEntity=Suppliers::class, inversedBy="getProducts")
      */
     private $SupplierID;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $picture;
 
     public function getId(): ?int
     {
@@ -222,6 +227,18 @@ class Products
     public function setSupplierID(?Suppliers $SupplierID): self
     {
         $this->SupplierID = $SupplierID;
+
+        return $this;
+    }
+
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?string $picture): self
+    {
+        $this->picture = $picture;
 
         return $this;
     }

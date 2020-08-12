@@ -1,15 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="03227df6-deeb-4cca-8aef-21ab88a54345" name="Default Changelist" comment="" />
+    <list default="true" id="03227df6-deeb-4cca-8aef-21ab88a54345" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProductsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Products.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Products.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ProductsType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ProductsType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/products/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/products/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/products/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/products/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/products/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/products/index.html.twig" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -118,11 +150,14 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1fwfDRlKnczL3S7PU4XYKhjOLTT" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -132,6 +167,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="php.override.implement.member.chooser.php.doc" value="DEFAULT" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -142,17 +178,33 @@
       <option name="presentableId" value="Default" />
       <updated>1597133956654</updated>
       <workItem from="1597133958422" duration="21568000" />
+      <workItem from="1597212989013" duration="13364000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
     <state x="336" y="361" key="#SQL_Dialects" timestamp="1597134994055">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="336" y="361" key="#SQL_Dialects/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1597134994055" />
+    <state x="765" y="202" key="#com.intellij.ide.util.MemberChooser" timestamp="1597231318227">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="202" key="#com.intellij.ide.util.MemberChooser/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1597231318227" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1597149070538">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
