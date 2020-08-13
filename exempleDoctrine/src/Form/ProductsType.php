@@ -78,7 +78,7 @@ class ProductsType extends AbstractType
                 'label' => 'Photo du produit',
                 //unmapped => fichier non associé à aucune propriété d'entité, validation impossible avec les annotations
                 'mapped' => false,
-                //pour éviter de recharger la photo lors de l'édition du profil
+                //pour éviter de recharger la photo lors de l'édition du profile
                 'required' => false,
                 'constraints' => [
                     new Image([

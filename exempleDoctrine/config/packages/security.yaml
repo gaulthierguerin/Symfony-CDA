@@ -1,6 +1,16 @@
 security:
+    encoders:
+        App\Entity\User:
+            algorithm: bcrypt
+            cost: 12
+
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
+        from_database:
+            entity:
+                class: App\Entity\User
+                property: email
+
         users_in_memory: { memory: null }
     firewalls:
         dev:
@@ -8,8 +18,15 @@ security:
             security: false
         main:
             anonymous: true
-            lazy: true
-            provider: users_in_memory
+            logout:
+                path: /logout
+                target: /
+            form_login:
+                check_path: /login
+            provider: from_database
+            guard:
+                authenticators:
+                    - App\Security\LoginFormAuthenticator
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
@@ -20,5 +37,5 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/profile, roles: ROLE_USER }

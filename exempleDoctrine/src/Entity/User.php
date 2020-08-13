@@ -4,8 +4,9 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -20,7 +21,7 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      * @Assert\NotBlank(
      *     message="Veuillez renseigner ce champ."
      * )
@@ -33,10 +34,16 @@ class User implements UserInterface
     private $UserEmail;
 
     /**
-     * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(
      *     message="Veuillez renseigner ce champ"
      * )
+     * @Assert\Length(max=4096)
+     */
+    private $plainPassword;
+
+    /**
+     * @ORM\Column(type="string", length=64)
+
      */
     private $UserPassword;
 
@@ -60,6 +67,16 @@ class User implements UserInterface
         $this->UserEmail = $UserEmail;
 
         return $this;
+    }
+
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword($password)
+    {
+        $this->plainPassword = $password;
     }
 
     public function getUserPassword(): ?string
@@ -91,7 +108,11 @@ class User implements UserInterface
      */
     public function getRoles()
     {
-        // TODO: Implement getRoles() method.
+        if ($this->UserRole == "administrateur")
+            return ["ROLE_ADMIN"];
+        if ($this->UserRole == "client")
+            return ["ROLE_USER"];
+        return [];
     }
 
     /**
@@ -99,7 +120,7 @@ class User implements UserInterface
      */
     public function getSalt()
     {
-        // TODO: Implement getSalt() method.
+        return "";
     }
 
     /**
@@ -107,7 +128,7 @@ class User implements UserInterface
      */
     public function getUsername()
     {
-        // TODO: Implement getUsername() method.
+        return $this->getUserEmail();
     }
 
     /**
@@ -123,6 +144,7 @@ class User implements UserInterface
      */
     public function getPassword()
     {
-        // TODO: Implement getPassword() method.
+        return $this->getUserPassword();
     }
+
 }
