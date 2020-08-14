@@ -94,6 +94,8 @@ class UserController extends AbstractController
             return $this->redirectToRoute('user_index');
         }
 
+        $this->denyAccessUnlessGranted('edit', $user, 'non non non...');
+
         return $this->render('user/edit.html.twig', [
             'user' => $user,
             'form' => $form->createView(),

@@ -24,7 +24,7 @@ class Products
      *     message="Veuillez renseigner le nom du fournisseur"
      * )
      * @Assert\Regex(
-     *     pattern="/^[\s\w\#\_\-éèàçâêîôûùäaëïüö]+$/",
+     *     pattern="/^[\s\D\#\_\-éèàçâêîôûùäaëïüö]+$/",
      *     message="Caratère(s) non valide(s)"
      * )
      */
